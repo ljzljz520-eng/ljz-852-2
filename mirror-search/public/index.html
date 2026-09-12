@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>开源镜像包搜索站</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1><a href="/">📦 开源镜像包搜索站</a></h1>
+      <nav><a href="/admin">后台管理</a></nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="search-box">
+      <div class="search-row">
+        <input id="keyword" type="search" placeholder="输入项目名称、描述或许可证关键词…" autofocus>
+        <button id="searchBtn">搜索</button>
+      </div>
+      <div id="tagCloud" class="tag-cloud"></div>
+    </section>
+
+    <p id="searchMeta" class="meta"></p>
+    <section id="results"></section>
+    <nav id="pagination" class="pagination"></nav>
+  </main>
+
+  <footer class="site-footer">开源镜像包搜索站 · 仅收录开源软件</footer>
+  <script src="/js/main.js"></script>
+</body>
+</html>

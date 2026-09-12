@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>后台管理 - 开源镜像包搜索站</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1><a href="/">📦 开源镜像包搜索站</a> · 后台管理</h1>
+      <nav><a href="/">返回首页</a></nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="loginBox" class="admin-login">
+      <p>请输入管理令牌(默认 <code>admin-token</code>,可用环境变量 <code>ADMIN_TOKEN</code> 修改):</p>
+      <div class="search-row">
+        <input id="tokenInput" type="password" placeholder="管理令牌">
+        <button id="loginBtn">登录</button>
+      </div>
+      <p id="loginMsg" class="error"></p>
+    </section>
+
+    <div id="adminPanel" hidden>
+      <section class="admin-section">
+        <h2>概览</h2>
+        <div id="stats" class="stats-grid"></div>
+        <h3>热门搜索词</h3>
+        <ul id="hotKeywords" class="hot-list"></ul>
+      </section>
+
+      <section class="admin-section">
+        <h2>屏蔽词维护</h2>
+        <div class="search-row">
+          <input id="newWord" type="text" placeholder="新增屏蔽词">
+          <button id="addWordBtn">添加</button>
+        </div>
+        <p id="wordMsg" class="error"></p>
+        <table class="admin-table">
+          <thead><tr><th>ID</th><th>屏蔽词</th><th>添加时间</th><th>操作</th></tr></thead>
+          <tbody id="wordList"></tbody>
+        </table>
+      </section>
+
+      <section class="admin-section">
+        <h2>搜索日志</h2>
+        <div class="search-row">
+          <input id="logKeyword" type="search" placeholder="按关键词过滤日志">
+          <button id="logSearchBtn">过滤</button>
+        </div>
+        <table class="admin-table">
+          <thead>
+            <tr><th>ID</th><th>关键词</th><th>标签</th><th>结果数</th><th>被屏蔽</th><th>IP</th><th>时间</th></tr>
+          </thead>
+          <tbody id="logList"></tbody>
+        </table>
+        <nav id="logPagination" class="pagination"></nav>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">开源镜像包搜索站 · 后台管理</footer>
+  <script src="/js/admin.js"></script>
+</body>
+</html>
