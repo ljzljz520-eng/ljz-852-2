@@ -16,6 +16,10 @@ app.get('/admin', (req, res) =>
 
 // 统一错误处理
 app.use((err, req, res, next) => {
+  // 请求体解析失败(如 malformed JSON)属于客户端错误,返回 400
+  if (err.type === 'entity.parse.failed') {
+    return res.status(400).json({ error: '请求体不是有效的 JSON' });
+  }
   console.error(err);
   res.status(500).json({ error: '服务器内部错误' });
 });

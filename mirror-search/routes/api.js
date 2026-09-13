@@ -108,7 +108,11 @@ router.get('/tags', (req, res) => {
 
 // GET /api/packages/:id — 单条记录详情 + 相关项目
 router.get('/packages/:id', (req, res) => {
-  const id = parseInt(req.params.id);
+  // ID 必须是纯数字,避免 parseInt('1abc') 之类被静默截断而命中错误记录
+  if (!/^\d+$/.test(req.params.id)) {
+    return res.status(400).json({ error: '无效的 ID' });
+  }
+  const id = parseInt(req.params.id, 10);
   const row = db.prepare(`${PACKAGE_SELECT} WHERE p.id = ? GROUP BY p.id`).get(id);
   if (!row) return res.status(404).json({ error: '记录不存在' });
 
